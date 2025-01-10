@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['middleware' => 'isLogin'], function () {
+    Route::get('/sign-in', \App\Livewire\Auth\Login::class)->name('sign-in');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', \App\Livewire\Dashboard::class)->name('dashboard');
+    Route::get('/master-data/customers', \App\Livewire\Customers::class)->name('master-data.customers');
+    Route::get('/master-data/products', \App\Livewire\Products::class)->name('master-data.products');
+
+    Route::get('/logout', function () {
+        auth()->logout();
+        return redirect()->route('sign-in');
+    })->name('logout');
 });

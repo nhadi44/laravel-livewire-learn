@@ -1,0 +1,11 @@
+{
+	"plugins": ["prettier-plugin-blade"],
+	"printWidth": 120,
+	"tabWidth": 4,
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"htmlWhitespaceSensitivity": "ignore",
+	"singleAttributePerLine": false,
+	"proseWrap": "preserve"
+}
